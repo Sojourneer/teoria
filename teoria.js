@@ -647,6 +647,7 @@ module.exports = {
 },{}],5:[function(require,module,exports){
 var scientific = require('scientific-notation');
 var helmholtz = require('helmholtz');
+var abc = require('abc');
 var pitchFq = require('pitch-fq');
 var knowledge = require('./knowledge');
 var vector = require('./vector');
@@ -750,6 +751,33 @@ Note.prototype = {
     return pad(name + this.accidental(), padchar, padcount);
   },
 
+   /**
+   * Returns the ABC notation form of the note (fx _C,, ^d')
+   */
+  abc: function() {
+    var n = this.name();
+    acc = "";
+    nAcc = this.accidentalValue();
+    if(nAcc > 0)
+        for(i=0; i < nAcc; ++i) acc += "^";
+    else if(nAcc < 0)
+        for(i=0; i < -nAcc; ++i) acc += "_";
+    
+    switch(this.octave()) {
+    case 0: return acc + n.toUpperCase() + ",,,";
+    case 1: return acc + n.toUpperCase() + ",,";
+    case 2: return acc + n.toUpperCase() + ",,";
+    case 3: return acc + n.toUpperCase() + ",";
+    case 4: return acc + n.toUpperCase();
+    case 5: return acc + n.toLowerCase();
+    case 6: return acc + n.toLowerCase() + "'";
+    case 7: return acc + n.toLowerCase() + "''";
+    
+    default:
+        return n.toString();
+    }
+  },
+  
   /**
    * Returns the scientific notation form of the note (fx E4, Bb3, C#7 etc.)
    */
