@@ -198,6 +198,11 @@ isn't set, a standard major chord will be returned.
 
 Example: `teoria.note('A5').helmholtz() -> "a''"`
 
+#### Note#abc()
+ - Returns the note name formatted in ABC notation.
+
+Example: `teoria.note("ab'").abc() -> "_A"`
+
 #### Note#scientific()
  - Returns the note name formatted in scientific notation.
 
