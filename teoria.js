@@ -807,7 +807,7 @@ Note.prototype = {
   },
 
  /**
-   * Returns notes that are enharmonic with this note.
+   * Returns enharmonic with given note name.
    */
   asNamed: function(name) {
     if(this.name() == name)

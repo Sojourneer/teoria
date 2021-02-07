@@ -222,6 +222,9 @@ teoria.note('c').enharmonics(true).toString();
 // -> 'b#'
 ```
 
+#### Note#asNamed(noteName)
+ - Returns the note or the enharmonic with matches the given note name
+
 #### Note#durationInSeconds(bpm, beatUnit)
  - Returns the duration of the note, given a tempo (in bpm) and a beat unit
  (the lower numeral of the time signature)
